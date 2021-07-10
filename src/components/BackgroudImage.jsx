@@ -5,22 +5,30 @@ import Background4 from '../assets/images/bg-image-4.jpg'
 import Background5 from '../assets/images/bg-image-5.jpg'
 import Background6 from '../assets/images/bg-image-6.jpg'
 import Background7 from '../assets/images/bg-image-7.jpg'
+import Background8 from '../assets/images/bg-image-8.jpg'
+import Background9 from '../assets/images/bg-image-9.jpg'
+import Background10 from '../assets/images/bg-image-10.jpg'
+import Background11 from '../assets/images/bg-image-11.jpg'
+import { useEffect, useState } from 'react'
 
 export function BackgroundImage() {
+  const [background, setBackground] = useState('')
+
   const images = [
-    Background2, Background3, Background4,
-    Background5, Background6, Background7, Background6
+    Background1, Background2, Background3, Background4,
+    Background5, Background6, Background7, Background8,
+    Background9, Background10, Background11
   ]
 
-  const randomBackground = () => {
+  useEffect(() => {
     const randomKey = Math.floor(Math.random() * images.length) 
-    return images[randomKey]
-  }
+    return setBackground(images[randomKey])
+  }, [])
 
   return (
     <img 
       className="background-page" 
-      src={randomBackground()} 
+      src={background} 
       alt="None of this" 
     />
   );

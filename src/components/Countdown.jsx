@@ -42,7 +42,7 @@ export function Countdown() {
       <h1>{totalDays}</h1>
       <h1>{hours}</h1>
       <h1>{minutes}</h1>
-      <h1 className="seconds">{seconds}</h1>
+      <h3 className="seconds">{seconds}</h3>
     </div>
   );
 }

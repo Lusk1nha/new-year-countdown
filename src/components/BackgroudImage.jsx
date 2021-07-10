@@ -8,7 +8,7 @@ import Background7 from '../assets/images/bg-image-7.jpg'
 
 export function BackgroundImage() {
   const images = [
-    Background1, Background2, Background3, Background4,
+    Background2, Background3, Background4,
     Background5, Background6, Background7, Background6
   ]
 

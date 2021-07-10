@@ -1,22 +1,48 @@
+import { useEffect, useState } from "react";
+
 export function Countdown() {
   const dateNow = new Date();
+
+  const [totalDays, setTotalDays] = useState('')
+  const [hours, setHours] = useState('')
+  const [minutes, setMinutes] = useState('')
+  const [seconds, setSeconds] = useState('')
+
+  useEffect(() => {
+    transformInDays()
+    getHour()
+    getMinutes()
+    getSeconds()
+  }, [])
   
   const transformInDays = () => {
-    const months = dateNow.getMonth()
-    let totalDays = 0
+    const months = (dateNow.getMonth() - 1) * 31
+    const restDays = (31 - dateNow.getDate())
+    
+    return setTotalDays(restDays + months)
+  }
 
-    for ( let i = 1; i !== months; i++ ) {
-      totalDays += 31
-    }
+  const getHour = () => {
+    const hour = 24 - dateNow.getHours()
+    return setHours(hour < 10 ? `0${hour}` : hour)
+  }
 
-    return (31 - dateNow.getDate()) + totalDays
+  const getMinutes = () => {
+    const minutes = 59 - dateNow.getMinutes()
+    return setMinutes(minutes < 10 ? `0${minutes}` : minutes)
+  }
+
+  const getSeconds = () => {
+    const seconds = 59 - dateNow.getSeconds()
+    return setSeconds(seconds < 10 ? `0${seconds}` : seconds)
   }
 
   return (
-    <>
-      <h1>{transformInDays()}</h1>
-      <h1>{12 - (dateNow.getMonth() + 1) }</h1>
-      <h1>{dateNow.getFullYear()}</h1>
-    </>
+    <div className="countdown">
+      <h1>{totalDays}</h1>
+      <h1>{hours}</h1>
+      <h1>{minutes}</h1>
+      <h1 className="seconds">{seconds}</h1>
+    </div>
   );
 }

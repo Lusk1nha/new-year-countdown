@@ -6,10 +6,10 @@ import './styles/app.scss';
 function App() {
 
   return (
-    <div id="main">
+    <main id="main">
       <BackgroundImage />
       <Countdown />
-    </div>
+    </main>
   );
 }
 

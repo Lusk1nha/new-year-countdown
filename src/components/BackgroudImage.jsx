@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import Background1 from '../assets/images/bg-image-1.jpg'
 import Background2 from '../assets/images/bg-image-2.jpg'
 import Background3 from '../assets/images/bg-image-3.jpg'
@@ -9,7 +11,6 @@ import Background8 from '../assets/images/bg-image-8.jpg'
 import Background9 from '../assets/images/bg-image-9.jpg'
 import Background10 from '../assets/images/bg-image-10.jpg'
 import Background11 from '../assets/images/bg-image-11.jpg'
-import { useEffect, useState } from 'react'
 
 export function BackgroundImage() {
   const [background, setBackground] = useState('')

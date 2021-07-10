@@ -71,31 +71,61 @@ body {
 
   z-index: 1;
 
-  h1, h3 {
-    color: white;
-    font-size: clamp(1rem, 7vw, 4rem);
-    letter-spacing: 0.3rem;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    margin: 0 0.8rem;
+    margin: 0 1rem;
 
     transition: text-shadow 0.3s ease-in, margin 0.2s;
+  
+    &:hover {
+      text-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.5);
+    }
+
+    h1, h3 {
+      color: white;
+      font-size: clamp(1rem, 7vw, 4rem);
+      letter-spacing: 0.3rem;
+  
+      text-align: end;
+      vertical-align: bottom;
+  
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    h3.seconds {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(1rem, 4vw, 2.4rem);
+    
+      margin-bottom: 0.2rem;
+    
+      @include tablet {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .sub-name {
+      color: white;
+      font-size: clamp(0.2rem, 2vw, 0.8rem);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+
+      margin-top: 0.3rem;
+    }
 
     @include tablet {
       margin: 0 1.5rem;
     }
 
     @include desktop {
-      margin: 0 2rem;
-    }
-
-    &:hover {
-      text-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.5);
+      margin: 0 1.7rem;
     }
   }
 }
 
-h3.seconds {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: clamp(1rem, 4vw, 2.4rem);
-  margin-bottom: 0.6rem;
-}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export function Countdown() {
-  const dateNow = new Date();
+  let dateNow = new Date();
 
   const [totalDays, setTotalDays] = useState('')
   const [hours, setHours] = useState('')
@@ -9,10 +9,18 @@ export function Countdown() {
   const [seconds, setSeconds] = useState('')
 
   useEffect(() => {
-    transformInDays()
-    getHour()
-    getMinutes()
-    getSeconds()
+    const timerID = setInterval(() => {
+      dateNow = new Date()
+
+      transformInDays()
+      getHour()
+      getMinutes()
+      getSeconds()
+    }, 1000)
+
+    return function cleanUp() {
+      clearInterval(timerID)
+    }
   }, [])
   
   const transformInDays = () => {
@@ -39,10 +47,25 @@ export function Countdown() {
 
   return (
     <div className="countdown">
-      <h1>{totalDays}</h1>
-      <h1>{hours}</h1>
-      <h1>{minutes}</h1>
-      <h3 className="seconds">{seconds}</h3>
+      <div>
+        <h1>{totalDays}</h1>
+        <h5 className="sub-name">Days</h5>
+      </div>
+
+      <div>
+        <h1>{hours}</h1>
+        <h5 className="sub-name">Hours</h5>
+      </div>
+
+      <div>
+        <h1>{minutes}</h1>
+        <h5 className="sub-name">Minutes</h5>
+      </div>
+
+      <div>
+        <h3 className="seconds">{seconds}</h3>
+        <h5 className="sub-name">Seconds</h5>
+      </div>
     </div>
   );
 }

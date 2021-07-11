@@ -15,13 +15,13 @@ import Background11 from '../assets/images/bg-image-11.jpg'
 export function BackgroundImage() {
   const [background, setBackground] = useState('')
 
-  const images = [
-    Background1, Background2, Background3, Background4,
-    Background5, Background6, Background7, Background8,
-    Background9, Background10, Background11
-  ]
-
   useEffect(() => {
+    const images = [
+      Background1, Background2, Background3, Background4,
+      Background5, Background6, Background7, Background8,
+      Background9, Background10, Background11
+    ]
+
     const randomKey = Math.floor(Math.random() * images.length) 
     return setBackground(images[randomKey])
   }, [])
@@ -30,7 +30,7 @@ export function BackgroundImage() {
     <img 
       className="background-page" 
       src={background} 
-      alt="None of this" 
+      alt="Random background" 
     />
   );
 }

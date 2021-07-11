@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function Countdown() {
-  let dateNow = new Date();
+  let dateNow = useRef(new Date());
 
   const [totalDays, setTotalDays] = useState('')
   const [hours, setHours] = useState('')
@@ -10,13 +10,13 @@ export function Countdown() {
 
   useEffect(() => {
     const timerID = setInterval(() => {
-      dateNow = new Date()
+      dateNow.current = new Date()
 
-      transformInDays()
-      getHour()
-      getMinutes()
       getSeconds()
-    }, 1000)
+      getMinutes()
+      getHour()
+      transformInDays()
+    }, 900)
 
     return function cleanUp() {
       clearInterval(timerID)
@@ -24,24 +24,24 @@ export function Countdown() {
   }, [])
   
   const transformInDays = () => {
-    const months = (dateNow.getMonth() - 1) * 31
-    const restDays = (31 - dateNow.getDate())
+    const months = (dateNow.current.getMonth() - 1) * 31
+    const restDays = ((31 - dateNow.current.getDate()) - 1)
     
     return setTotalDays(restDays + months)
   }
 
   const getHour = () => {
-    const hour = 24 - dateNow.getHours()
+    const hour = 24 - dateNow.current.getHours()
     return setHours(hour < 10 ? `0${hour}` : hour)
   }
 
   const getMinutes = () => {
-    const minutes = 59 - dateNow.getMinutes()
+    const minutes = 59 - dateNow.current.getMinutes()
     return setMinutes(minutes < 10 ? `0${minutes}` : minutes)
   }
 
   const getSeconds = () => {
-    const seconds = 59 - dateNow.getSeconds()
+    const seconds = 59 - dateNow.current.getSeconds()
     return setSeconds(seconds < 10 ? `0${seconds}` : seconds)
   }
 

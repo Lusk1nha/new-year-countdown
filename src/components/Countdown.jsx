@@ -1,54 +1,37 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Countdown() {
-  let dateNow = useRef(new Date());
-
-  const [totalDays, setTotalDays] = useState('')
+  const [days, setDays] = useState('')
   const [hours, setHours] = useState('')
   const [minutes, setMinutes] = useState('')
   const [seconds, setSeconds] = useState('')
 
   useEffect(() => {
     const timerID = setInterval(() => {
-      dateNow.current = new Date()
+      const dateNow = new Date()
+      const newYearDate = new Date(`1 Jan ${dateNow.getFullYear() + 1}`);
 
-      getSeconds()
-      getMinutes()
-      getHour()
-      transformInDays()
-    }, 900)
+      const totalSeconds = (newYearDate - dateNow) / 1000
+      
+      setDays(formatTime(Math.floor(totalSeconds / 3600 / 24)))
+      setHours(formatTime(Math.floor(totalSeconds / 3600) % 24))
+      setMinutes(formatTime(Math.floor(totalSeconds / 60) % 60))
+      setSeconds(formatTime(Math.floor(totalSeconds) % 60))
+    }, 1000)
 
     return function cleanUp() {
       clearInterval(timerID)
     }
   }, [])
-  
-  const transformInDays = () => {
-    const months = (dateNow.current.getMonth() - 1) * 31
-    const restDays = ((31 - dateNow.current.getDate()) - 1)
-    
-    return setTotalDays(restDays + months)
-  }
 
-  const getHour = () => {
-    const hour = 24 - dateNow.current.getHours()
-    return setHours(hour < 10 ? `0${hour}` : hour)
-  }
-
-  const getMinutes = () => {
-    const minutes = 59 - dateNow.current.getMinutes()
-    return setMinutes(minutes < 10 ? `0${minutes}` : minutes)
-  }
-
-  const getSeconds = () => {
-    const seconds = 59 - dateNow.current.getSeconds()
-    return setSeconds(seconds < 10 ? `0${seconds}` : seconds)
+  const formatTime = (number) => {
+    return number < 10 ? `0${number}` : number
   }
 
   return (
     <div className="countdown">
       <div>
-        <h1>{totalDays}</h1>
+        <h1>{days}</h1>
         <h5 className="sub-name">Dias</h5>
       </div>
 
@@ -63,7 +46,7 @@ export function Countdown() {
       </div>
 
       <div>
-        <h3 className="seconds">{seconds}</h3>
+        <h3>{seconds}</h3>
         <h5 className="sub-name">Segundos</h5>
       </div>
     </div>

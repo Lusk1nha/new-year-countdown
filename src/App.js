@@ -6,10 +6,12 @@ import './styles/app.scss';
 function App() {
 
   return (
-    <main id="main">
+    <div id="main">
+      <h1 className="title">Para o ano novo falta:</h1>
+
       <BackgroundImage />
       <Countdown />
-    </main>
+    </div>
   );
 }
 

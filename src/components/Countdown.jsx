@@ -49,22 +49,22 @@ export function Countdown() {
     <div className="countdown">
       <div>
         <h1>{totalDays}</h1>
-        <h5 className="sub-name">Days</h5>
+        <h5 className="sub-name">Dias</h5>
       </div>
 
       <div>
         <h1>{hours}</h1>
-        <h5 className="sub-name">Hours</h5>
+        <h5 className="sub-name">Horas</h5>
       </div>
 
       <div>
         <h1>{minutes}</h1>
-        <h5 className="sub-name">Minutes</h5>
+        <h5 className="sub-name">Minutos</h5>
       </div>
 
       <div>
         <h3 className="seconds">{seconds}</h3>
-        <h5 className="sub-name">Seconds</h5>
+        <h5 className="sub-name">Segundos</h5>
       </div>
     </div>
   );

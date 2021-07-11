@@ -6,7 +6,7 @@ A countdown showing how many days to the end of the year.
 
 In this project, I used React(create-react-app) and SASS.
 
-I learned more about Hooks as useState, useEffect, useRef, and figure out a little more about how that works React.
+I learned more about Hooks as useState, useEffect, and figure out a little more about how that works React.
  
 
 [This video was my inspiration to implement that app.](https://youtu.be/dtKciwk_si4).
@@ -17,4 +17,4 @@ I learned more about Hooks as useState, useEffect, useRef, and figure out a litt
 
 Image -
 
-[![vercel.com](./public/assets/github-image-desktop.png)](https://sunnyside-agency-lusk1nha.vercel.app/)
+[![vercel.com](./public/assets/github-image.png)](https://sunnyside-agency-lusk1nha.vercel.app/)

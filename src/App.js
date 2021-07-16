@@ -6,12 +6,14 @@ import './styles/app.scss';
 function App() {
 
   return (
-    <div id="main">
-      <h1 className="title">Para o ano novo falta:</h1>
+    <>
+      <div id="main">
+        <BackgroundImage />
+        <h1 className="title">Para o ano novo falta:</h1>
 
-      <BackgroundImage />
-      <Countdown />
-    </div>
+        <Countdown />
+      </div>
+    </>
   );
 }
 
